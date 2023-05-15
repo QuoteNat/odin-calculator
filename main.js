@@ -82,6 +82,7 @@ function buttonClick(e) {
         if (state === "lhs") {
             operator = input;
             rhs = "";
+            state = "rhs";
         } else {
             // evaluate if rhs
             if (evaluate() === 0) {
@@ -90,10 +91,10 @@ function buttonClick(e) {
                 operator = input;
                 rhs = "";
             }
+            display();
+            state = "rhs";
+            return 0;
         }
-        display();
-        state = "rhs";
-        return 0;
     }
 
     display();
