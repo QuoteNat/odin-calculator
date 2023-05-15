@@ -78,9 +78,21 @@ function buttonClick(e) {
             rhs += input;
         }
     } else if (OPERATORS.includes(input)) {
-        operator = input;
-        rhs = "";
+        if (state === "lhs") {
+            operator = input;
+            rhs = "";
+        } else {
+            // evaluate if rhs
+            if (evaluate() === 0) {
+                return 0;
+            } else {
+                operator = input;
+                rhs = "";
+            }
+        }
+        display();
         state = "rhs";
+        return 0;
     }
 
     display();
