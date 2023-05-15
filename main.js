@@ -35,6 +35,14 @@ function evaluate() {
             lhs = left * right;
             break;
         case "/":
+            if (right === 0) {
+                lhs = "Reality is now null and avoid, or approaching infinity."
+                rhs = "Reality is now null and avoid, or approaching infinity."
+                display();
+                // Wait 3 seconds to allow user to read the joke.
+                clear();
+                return 0;
+            }
             lhs = left / right;
             break;            
     }
@@ -61,7 +69,10 @@ function buttonClick(e) {
     if (input === "clear") {
         clear();
     } else if (input === "=") {
-        evaluate();
+        let err = evaluate();
+        if (err === 0) {
+            return 0;
+        }
     } else if (NUMS.includes(input)) {
         if (state === "lhs") {
             lhs += input;
