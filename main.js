@@ -41,16 +41,23 @@ function evaluate() {
 
     rhs = "";
     operator = "";
-    state = lhs;
+    state = "lhs";
 
     // convert lhs back into a string for consistency
     lhs = lhs.toString();
-    console.log(lhs);
+}
+
+function display() {
+    const displayElement = document.querySelector("#display");
+    if (state === "lhs") {
+        displayElement.textContent = lhs;
+    } else {
+        displayElement.textContent = rhs;
+    }
 }
 
 function buttonClick(e) {
     let input = e.currentTarget.dataset.value;
-    console.log(input);
     if (input === "clear") {
         clear();
     } else if (input === "=") {
@@ -58,16 +65,15 @@ function buttonClick(e) {
     } else if (NUMS.includes(input)) {
         if (state === "lhs") {
             lhs += input;
-            console.log("LHS=" + lhs);
         } else {
             rhs += input;
-            console.log("RHS=" + rhs);
         }
     } else if (OPERATORS.includes(input)) {
         operator = input;
         state = rhs;
-        console.log("Operator=" + input);
     }
+
+    display();
 }
 
 const buttons = document.querySelectorAll(".calculator-button");
