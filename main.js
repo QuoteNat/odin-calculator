@@ -39,7 +39,6 @@ function evaluate() {
                 lhs = "Reality is now null and avoid, or approaching infinity."
                 rhs = "Reality is now null and avoid, or approaching infinity."
                 display();
-                // Wait 3 seconds to allow user to read the joke.
                 clear();
                 return 0;
             }
@@ -48,9 +47,11 @@ function evaluate() {
     }
 
     state = "lhs";
-
-    // convert lhs back into a string for consistency
-    lhs = lhs.toString();
+    /**
+     * Round lhs to 8 decimal points with padding, 
+     * then remove padding, and then convert back to string.
+     */
+    lhs = parseFloat(lhs.toFixed(8)).toString();
 }
 
 function display() {
