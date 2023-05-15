@@ -47,8 +47,6 @@ function evaluate() {
             break;            
     }
 
-    rhs = "";
-    operator = "";
     state = "lhs";
 
     // convert lhs back into a string for consistency
@@ -81,7 +79,8 @@ function buttonClick(e) {
         }
     } else if (OPERATORS.includes(input)) {
         operator = input;
-        state = rhs;
+        rhs = "";
+        state = "rhs";
     }
 
     display();
