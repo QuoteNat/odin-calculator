@@ -14,7 +14,7 @@ function clear() {
 
 // evaluate the entered expression
 function evaluate() {
-
+    console.log("do math");
 }
 
 function buttonClick(e) {
@@ -32,6 +32,10 @@ function buttonClick(e) {
             rhs += input;
             console.log("RHS=" + rhs);
         }
+    } else if (OPERATORS.includes(input)) {
+        operator = input;
+        state = rhs;
+        console.log("Operator=" + input);
     }
 }
 
