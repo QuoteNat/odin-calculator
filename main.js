@@ -14,7 +14,38 @@ function clear() {
 
 // evaluate the entered expression
 function evaluate() {
-    console.log("do math");
+    let left = 0;
+    let right = 0;
+    // prevent empty values by defaulting to 0
+    if (lhs !== "") {
+        left = parseFloat(lhs);
+    }
+    if (rhs !== "") {
+        right = parseFloat(rhs);
+    }
+    
+    switch (operator) {
+        case "+":
+            lhs = left + right;
+            break;
+        case "-":
+            lhs = left - right;
+            break;
+        case "X":
+            lhs = left * right;
+            break;
+        case "/":
+            lhs = left / right;
+            break;            
+    }
+
+    rhs = "";
+    operator = "";
+    state = lhs;
+
+    // convert lhs back into a string for consistency
+    lhs = lhs.toString();
+    console.log(lhs);
 }
 
 function buttonClick(e) {
